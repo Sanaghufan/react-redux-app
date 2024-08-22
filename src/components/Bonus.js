@@ -1,7 +1,8 @@
 
 import { useState } from 'react';
+import { incrementBonus } from '../actions';
 
-function Bonus() {
+function Bonus({store}) {
   const [bonus, setBonus] = useState({ points: 0 });
 
   const increment = () => {
@@ -13,9 +14,9 @@ function Bonus() {
         <h4>
           <b>Bonus Component</b>
         </h4>
-        <h3>Total Point : ${bonus.points}</h3>
+        <h3>Total Point : ${store.getState().bonus.points}</h3>
 
-        <button onClick={increment}>Increment +</button>
+        <button onClick={()=>store.dispatch(incrementBonus())}>Increment +</button>
       </div>
     </div>
   );
